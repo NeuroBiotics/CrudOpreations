@@ -1,26 +1,17 @@
-"use strict";
+//header
+const jwt = require('jsonwebtoken');
+const key = 'partner';
+const expiration = '5h';
 
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-app.use(express.json());
+//payload
+const userdata = {
+id: 56,
+name: "kinza",
+age: 23,
+mail: "kinza@gmail.com"
+}
 
-const customerController = require("./Controllers/CustomerController");
+const values = jwt.sign(userdata, key,{expiresIn: expiration});
+console.log(values);
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/sessiondb');
-app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
-
-app.post('/create', customerController.CreateCustomer);
-app.get('/find', customerController.findCustomers);
-app.delete('/deleteAll', customerController.deleteAll);
-app.delete('/delete/:id', customerController.deleteId);
-app.put('/update/:id', customerController.updateCustomer);
-
-// Start the server
-
-app.listen(9000, () => {
-  console.log("Server is running on port 9000");
-});
