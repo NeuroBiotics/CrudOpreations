@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 const CustomerModel = require('../Models/CustomerModel')
 /// ya line ku lkhi h ?
 
