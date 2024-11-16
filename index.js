@@ -1,9 +1,9 @@
-//header
+
 const jwt = require('jsonwebtoken');
 const key = 'partner';
 const expiration = '5h';
 
-//payload
+
 const userdata = {
 id: 56,
 name: "kinza",
@@ -14,4 +14,8 @@ mail: "kinza@gmail.com"
 const values = jwt.sign(userdata, key,{expiresIn: expiration});
 console.log(values);
 
+
+
+console.log("Hello");
+console.log("Good");
 
